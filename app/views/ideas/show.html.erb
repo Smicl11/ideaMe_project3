@@ -4,6 +4,10 @@
       <div class="card card-block">
         <h4 class="card-title"><%= @idea.user.first_name %></h4>
         <p class="card-text"><%= @idea.idea %></p>
+        <p>
+          Submitted <%= time_ago_in_words(@idea.created_at) %>
+          by <%= @idea.user.first_name %>
+        </p>
         <%= link_to like_idea_path(@idea), method: :put, class: "glyphicon glyphicon-thumbs-up" do %>
           Upvote
           <%= @idea.get_upvotes.size %>

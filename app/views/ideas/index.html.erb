@@ -5,10 +5,12 @@
       <h1>Idea Index Page</h1>
       <hr>
       <% @ideas.each do |idea| %>
-          <h4><%= link_to idea.idea, idea %><br>
-            Submitted <%= time_ago_in_words(idea.created_at) %>
-            by <%= idea.user.first_name %>
-          </h4>
+          <h4><%= link_to idea.idea, idea %></h4>
+            <p>
+              Submitted <%= time_ago_in_words(idea.created_at) %>
+              by <%= idea.user.first_name %>
+            </p>
+
           <%= link_to like_idea_path(idea), method: :put, class: "glyphicon glyphicon-thumbs-up" do %>
             Upvote
             <%= idea.get_upvotes.size %>
