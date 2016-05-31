@@ -1,5 +1,14 @@
-<h1>Welcome to Users Index.</h1>
-
-<div>
-There are currently <%= @users.length %> signed_up
+<div class="jumbotron">
+  <div class="container">
+    <p>Welcome to,</p><h1 class="display-3">ideaMe!</h1> <p>The best way to share new ideas!</p>
+    <hr>
+    <p></p>
+    <p class="lead">
+      <% if current_user %>
+        <%= button_to "Submit Idea!", new_idea_path, :method => "get", class: "btn btn-lg btn-success" %>
+      <% else %>
+        <%= button_to "Sign Up!", new_user_path, :method => "get", class: "btn btn-lg btn-primary" %>
+      <% end %>
+    </p>
+  </div>
 </div>
