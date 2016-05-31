@@ -23,4 +23,10 @@ Rails.application.routes.draw do
   get "/ideas/:id/edit", to: "ideas#edit", as: "edit_idea"
   patch "/ideas/:id", to: "ideas#update", as: "update_idea"
   delete "/ideas/:id", to: "ideas#destroy", as: "delete_idea"
+
+  #like/dislike idea routes
+  put "/ideas/:id/like", to: "ideas#upvote", as: "like_idea"
+  put "/ideas/:id/dislike", to: "ideas#downvote", as: "dislike_idea"
+
+
 end
