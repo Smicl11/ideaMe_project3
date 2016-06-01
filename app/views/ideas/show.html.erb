@@ -22,6 +22,11 @@
           <%= link_to '', delete_idea_path, data: {:confirm => 'Are you sure you want to delete this amazing idea?'}, :method => :delete, class:"glyphicon glyphicon-trash"%>
         </div>
       </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= render partial: "comments/template", locals: {commentable: @idea, new_comment: @comment} %>
+        </div>  
+      </div>
     </div>
   </div>
 </div>

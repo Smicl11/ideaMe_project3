@@ -30,5 +30,5 @@ Rails.application.routes.draw do
   put "/ideas/:id/like", to: "ideas#upvote", as: "like_idea"
   put "/ideas/:id/dislike", to: "ideas#downvote", as: "dislike_idea"
 
-
+  resources :comments
 end

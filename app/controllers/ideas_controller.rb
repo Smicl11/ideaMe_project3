@@ -7,6 +7,7 @@ class IdeasController < ApplicationController
 
   def show
     @idea = Idea.find_by_id(params[:id])
+    @new_comment = Comment.build_from(@idea, current_user.id, "")
     render :show
   end
 
