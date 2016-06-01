@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-centered col-md-4 profile">
+    <div class="col-centered col-md-4 col-sm-6 col-xs-10 profile">
       <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= image_tag @user.avatar, class:"img-responsive" %>
+        </div>
         <div class="panel-body">
-          <%= image_tag @user.avatar, class:"img-thumbnail img-responsive" %>
           <div class="card-block">
             <h4 class="card-title">Welcome, <%= @user.first_name %></h4>
             <p class="card-text">Here's your profile information. If anything is wrong or missing, just click edit! Scroll down to see the ideas you've submitted.</p>
@@ -26,7 +28,7 @@
   <hr>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-centered col-md-4 col-sm-6 col-xs-10">
       <h1>User generated ideas will go here</h1>
     </div>
   </div>
