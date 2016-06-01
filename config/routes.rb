@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  #user routes
+  #home route
   root to: "users#index"
+
+  #user routes
   get "/users", to: "users#index", as: "users"
   get "/users/new", to: "users#new", as: "new_user"
   post "/users", to: "users#create", as: "create_user"
@@ -14,5 +16,19 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   get "/logout", to: "sessions#destroy"
   post "/sessions", to: "sessions#create"
+
+  #Idea routes
+  get "/ideas", to: "ideas#index", as: "ideas"
+  get "/ideas/new", to: "ideas#new", as: "new_idea"
+  post "/ideas", to: "ideas#create", as: "create_idea"
+  get "/ideas/:id", to: "ideas#show", as: "idea"
+  get "/ideas/:id/edit", to: "ideas#edit", as: "edit_idea"
+  patch "/ideas/:id", to: "ideas#update", as: "update_idea"
+  delete "/ideas/:id", to: "ideas#destroy", as: "delete_idea"
+
+  #like/dislike idea routes
+  put "/ideas/:id/like", to: "ideas#upvote", as: "like_idea"
+  put "/ideas/:id/dislike", to: "ideas#downvote", as: "dislike_idea"
+
 
 end

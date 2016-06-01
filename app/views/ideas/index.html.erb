@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-centered col-md-4">
+      <h1>Idea Index Page</h1>
+      <hr>
+      <!-- begin idea panel -->
+      <% @ideas.each do |idea| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4><%= link_to idea.idea, idea %></h4>
+            <p>
+              Submitted <%= time_ago_in_words(idea.created_at) %>
+              by <%= idea.user.first_name %>
+            </p>
+
+          <%= link_to like_idea_path(idea), method: :put, class: "glyphicon glyphicon-thumbs-up" do %>
+            Upvote
+            <%= idea.get_upvotes.size %>
+          <% end %>
+
+          <%= link_to dislike_idea_path(idea), method: :put, class: "glyphicon glyphicon-thumbs-down" do %>
+            Downvote
+            <%= idea.get_downvotes.size %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+      <!-- end idea panel -->
+    </div>
+  </div>
+</div>
