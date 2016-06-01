@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   #home route
-  root to: "users#index"
+  root to: "ideas#index"
 
   #user routes
   get "/users", to: "users#index", as: "users"
