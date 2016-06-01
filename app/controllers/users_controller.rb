@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
 
-  #this controller will route to the main page of the application
-  def index
-    @users = User.all
-    render :index
-  end
-
   def new
     @user = User.new
     render :new
