@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
 
-  #this controller will route to the main page of the application
-  def index
-    @users = User.all
-    render :index
-  end
-
   def new
     @user = User.new
     render :new
@@ -19,7 +13,7 @@ class UsersController < ApplicationController
     end
 
     if @user.save
-      flash[:notice] = "Welcome to ideaMe! Get ready to share your amazing ideas!"
+      flash[:success] = "Welcome to ideaMe! Get ready to share your amazing ideas!"
       login(@user)
       redirect_to user_path(@user)
     else

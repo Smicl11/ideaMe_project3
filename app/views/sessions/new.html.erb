@@ -1,15 +1,18 @@
 <div class="container">
   <div class="row">
-    <h1>Log In</h1>
-    <hr>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <%= simple_form_for @user, url: sessions_path, as: 'user' do |f| %>
-        <%= f.input :email, placeholder: "email@email.com"%>
-        <%= f.input :password, placeholder: "Password"%>
-        <%= f.button :submit, name:"Login", value: "Login" %>
-      <% end %>
+    <div class="col-centered col-md-6 col-sm-6 col-xs-10 pad-top">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Login</h4>
+        </div>
+        <div class="panel-body">
+          <%= simple_form_for @user, url: sessions_path, as: 'user' do |f| %>
+            <%= f.input :email, placeholder: "email@email.com"%>
+            <%= f.input :password, placeholder: "Password"%>
+            <%= f.button :submit, name:"Login", value: "Login" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
