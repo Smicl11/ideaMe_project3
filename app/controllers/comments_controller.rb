@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
 
   def create
     commentable = commentable_type.constantize.find(commentable_id)
@@ -44,4 +43,4 @@ class CommentsController < ApplicationController
     @comment.move_to_child_of(parent_comment)
   end
 
-end  
+end
