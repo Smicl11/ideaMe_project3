@@ -3,17 +3,11 @@
     <div class="col-centered col-md-6 col-sm-6 col-xs-10">
       <div class="panel panel-default">
         <div class="panel-body">
-          <h4 class="card-title"><%= @idea.user.first_name %></h4>
           <p class="card-text"><%= @idea.idea %></p>
-          <p>
-            Submitted <%= time_ago_in_words(@idea.created_at) %> ago
-            by <%= @idea.user.first_name %>
-          </p>
           <%= link_to like_idea_path(@idea), method: :put, class: "glyphicon glyphicon-thumbs-up" do %>
             Upvote
             <%= @idea.get_upvotes.size %>
           <% end %>
-
           <%= link_to dislike_idea_path(@idea), method: :put, class: "glyphicon glyphicon-thumbs-down" do %>
             Downvote
             <%= @idea.get_downvotes.size %>
@@ -22,6 +16,12 @@
             <%= link_to '', edit_idea_path, class:"glyphicon glyphicon-pencil"%>
             <%= link_to '', delete_idea_path, data: {:confirm => 'Are you sure you want to delete this amazing idea?'}, :method => :delete, class:"glyphicon glyphicon-trash"%>
           </div>
+        </div>
+        <div class="panel-footer">
+          <h6>
+            Submitted <%= time_ago_in_words(@idea.created_at) %> ago
+            by <%= @idea.user.first_name %>
+          </h6>
         </div>
       </div>
       <div class="panel panel-default">
