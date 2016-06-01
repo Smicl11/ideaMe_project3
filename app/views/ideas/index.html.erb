@@ -1,28 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-
+    <div class="col-centered col-md-4">
       <h1>Idea Index Page</h1>
       <hr>
-      <% @ideas.each do |idea| %>
-          <h4><%= link_to idea.idea, idea %></h4>
-            <p>
-              Submitted <%= time_ago_in_words(idea.created_at) %>
-              by <%= idea.user.first_name %>
-            </p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <% @ideas.each do |idea| %>
+              <h4><%= link_to idea.idea, idea %></h4>
+                <p>
+                  Submitted <%= time_ago_in_words(idea.created_at) %>
+                  by <%= idea.user.first_name %>
+                </p>
 
-          <%= link_to like_idea_path(idea), method: :put, class: "glyphicon glyphicon-thumbs-up" do %>
-            Upvote
-            <%= idea.get_upvotes.size %>
+              <%= link_to like_idea_path(idea), method: :put, class: "glyphicon glyphicon-thumbs-up" do %>
+                Upvote
+                <%= idea.get_upvotes.size %>
+              <% end %>
+
+              <%= link_to dislike_idea_path(idea), method: :put, class: "glyphicon glyphicon-thumbs-down" do %>
+                Downvote
+                <%= idea.get_downvotes.size %>
+              <% end %>
           <% end %>
-
-          <%= link_to dislike_idea_path(idea), method: :put, class: "glyphicon glyphicon-thumbs-down" do %>
-            Downvote
-            <%= idea.get_downvotes.size %>
-          <% end %>
-      <% end %>
-
-
+        </div>
+      </div>
     </div>
   </div>
 </div>

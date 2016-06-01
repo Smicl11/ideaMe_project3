@@ -1,21 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <div class="card card-block">
-        <%= image_tag @user.avatar, class:"card-img-top" %>
-        <div class="card-block">
-          <h4 class="card-title">Welcome, <%= @user.first_name %></h4>
-          <p class="card-text">Here's your profile information. If anything is wrong or missing, just click edit! Scroll down to see the ideas you've submitted.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">First Name: <%= @user.first_name %></li>
-          <li class="list-group-item">Last Name: <%= @user.last_name %></li>
-          <li class="list-group-item">Email: <%= @user.email %></li>
-        </ul>
-        <div class="card-block">
-          <div class="inner"><%= button_to "New Idea", new_idea_path(@user), :method => 'get', class: "btn btn-small btn-primary" %></div>
-          <div class="inner"><%= button_to "Edit Profile", user_edit_path(@user), :method => 'get', class: "btn btn-small btn-success" %></div>
-          <div class="inner"><%= button_to "Delete Profile", destroy_user_path(@user),data: {:confirm=>'Are you sure you want to delete your profile? This cannot be undone.'}, :method => 'delete', class: "btn btn-small btn-danger" %></div>
+    <div class="col-centered col-md-4 profile">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= image_tag @user.avatar, class:"img-thumbnail img-responsive" %>
+          <div class="card-block">
+            <h4 class="card-title">Welcome, <%= @user.first_name %></h4>
+            <p class="card-text">Here's your profile information. If anything is wrong or missing, just click edit! Scroll down to see the ideas you've submitted.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">First Name: <%= @user.first_name %></li>
+            <li class="list-group-item">Last Name: <%= @user.last_name %></li>
+            <li class="list-group-item">Email: <%= @user.email %></li>
+          </ul>
+          <div class="card-block">
+            <div class="inner"><%= button_to "New Idea", new_idea_path(@user), :method => 'get', class: "btn btn-small btn-primary" %></div>
+            <div class="inner"><%= button_to "Edit Profile", user_edit_path(@user), :method => 'get', class: "btn btn-small btn-success" %></div>
+            <div class="inner"><%= button_to "Delete Profile", destroy_user_path(@user),data: {:confirm=>'Are you sure you want to delete your profile? This cannot be undone.'}, :method => 'delete', class: "btn btn-small btn-danger" %></div>
+          </div>
         </div>
       </div>
     </div>
