@@ -17,8 +17,13 @@ class IdeasController < ApplicationController
   end
 
   def new
-    @idea = Idea.new
-    @user = User.find_by_id(params[:id])
+    if current_user == nil
+      flash[:error] = "Please login to post a new idea."
+      redirect_to login_path
+    else
+      @idea = Idea.new
+      @user = User.find_by_id(params[:id])
+    end
   end
 
   def create
