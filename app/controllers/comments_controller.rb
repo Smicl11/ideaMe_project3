@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_with_http_digest
 
   def create
     commentable = commentable_type.constantize.find(commentable_id)

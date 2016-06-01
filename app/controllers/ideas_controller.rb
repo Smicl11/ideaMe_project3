@@ -6,9 +6,14 @@ class IdeasController < ApplicationController
   end
 
   def show
-    @idea = Idea.find_by_id(params[:id])
-    @new_comment = Comment.build_from(@idea, current_user.id, "")
-    render :show
+    if current_user == nil
+      flash[:error] = "Please login to view more about this idea."
+      redirect_to ideas_path
+    else
+      @idea = Idea.find_by_id(params[:id])
+      @new_comment = Comment.build_from(@idea, current_user.id, "")
+      render :show
+    end
   end
 
   def new
