@@ -17,12 +17,14 @@
     <%= render "shared/navbar" %>
 
     <!-- Flash Message -->
-    <% flash.each do |type, message| %>
-      <div class="alert <%= alert_class_for(type) %> alert-dismissible fade in">
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <%= message %>
-      </div>
-    <% end %>
+    <div class="container pad-top">
+      <% flash.each do |type, message| %>
+        <div class="alert <%= alert_class_for(type) %> alert-dismissible fade in">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
 
     <!-- Pages render in here -->
     <%= yield %>
