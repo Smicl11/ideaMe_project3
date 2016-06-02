@@ -28,12 +28,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-    if @user == current_user
-      render :show
-    else
-      flash[:error] = "You need to be logged in to do that."
-      redirect_to ideas_path
-    end
+    render :show
   end
 
   def edit
@@ -41,7 +36,8 @@ class UsersController < ApplicationController
     if current_user == @user
       render :edit
     else
-      redirect_to users_path
+      flash[:error] = "You are not authorized to preform this function."
+      redirect_to :back
     end
   end
 
@@ -55,6 +51,9 @@ class UsersController < ApplicationController
         flash[:error] = "Please fill in all required fields (marked with *)"
         redirect_to @user
       end
+    else
+      flash[:error] = "You are not authorized to preform this function."
+      redirect_to :back
     end
   end
 
