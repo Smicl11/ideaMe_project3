@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     #If a user doesn't specify an avatar a default one will be automatically provided.
     if @user.avatar == ""
-      @user.avatar = "/placeholder.jpg"
+      @user.avatar = "/assets/placeholder.jpg"
     end
 
     if @user.save
@@ -21,19 +21,14 @@ class UsersController < ApplicationController
       login(@user)
       redirect_to user_path(@user)
     else
-      flash[:error] = "Looks like something is missing. Make sure everything marked * is filled in."
+      flash[:error] = @user.errors.full_messages.join(", ")
       redirect_to new_user_path
     end
   end
 
   def show
     @user = User.find_by_id(params[:id])
-    if @user == current_user
-      render :show
-    else
-      flash[:error] = "You need to be logged in to do that."
-      redirect_to ideas_path
-    end
+    render :show
   end
 
   def edit
@@ -41,7 +36,8 @@ class UsersController < ApplicationController
     if current_user == @user
       render :edit
     else
-      redirect_to users_path
+      flash[:error] = "You are not authorized to preform this function."
+      redirect_to :back
     end
   end
 
@@ -52,9 +48,12 @@ class UsersController < ApplicationController
         flash[:notice] = "Successfully Updated!"
         redirect_to @user
       else
-        flash[:error] = "Please fill in all required fields (marked with *)"
-        redirect_to @user
+        flash[:error] = @user.errors.full_messages.join(", ")
+        redirect_to :back
       end
+    else
+      flash[:error] = "You are not authorized to preform this function."
+      redirect_to :back
     end
   end
 

@@ -38,7 +38,7 @@ class IdeasController < ApplicationController
         flash[:notice] = "Your idea has been successfully created!"
         redirect_to idea_path(@idea)
       else
-        flash[:error] = "Uh oh! Looks like something went wrong. Try again."
+        flash[:error] = @idea.errors.full_messages.join(", ")
         redirect_to new_idea_path
       end
     end
@@ -62,7 +62,7 @@ class IdeasController < ApplicationController
       if @idea.update(idea_params)
         redirect_to idea_path(@idea)
       else
-        flash[:error] = "There was a problem saving your changes"
+        flash[:error] = @idea.errors.full_messages.join(", ")
         redirect_to idea_path(@idea)
       end
     else
