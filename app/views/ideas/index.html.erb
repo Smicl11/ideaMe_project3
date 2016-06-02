@@ -44,7 +44,7 @@
             Submitted <%= time_ago_in_words(idea.created_at) %> ago
             by <%= idea.user.first_name %>
           </h6>
-          <%= social_share_button_tag(idea.idea) %>
+          <%= social_share_button_tag(idea.idea, :popup => "true") %>
         </div>
       </div>
       <% end %>
