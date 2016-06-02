@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    redirect_to ideas_path
+  end
+
   def new
     @user = User.new
     render :new
@@ -28,7 +32,7 @@ class UsersController < ApplicationController
       render :show
     else
       flash[:error] = "You need to be logged in to do that."
-      redirect_to users_path
+      redirect_to ideas_path
     end
   end
 
@@ -56,9 +60,14 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find_by_id(params[:id])
-    @user.destroy
-    flash[:error] = "Your profile has been deleted"
-    redirect_to root_path
+    if current_user == @user
+      @user.destroy
+      flash[:error] = "Your profile and all of your ideas have been deleted"
+      redirect_to root_path
+    else
+      flash[:error] = "You are not authorized to preform this function."
+      redirect :back
+    end
   end
 
   private
@@ -66,7 +75,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :avatar, :password, :password_confirmation)
   end
-
-
 
 end
