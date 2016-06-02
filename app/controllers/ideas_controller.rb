@@ -27,38 +27,60 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = Idea.new(idea_params)
-    @idea.user_id = current_user.id
-    @user = User.find_by_id(params[:id])
-    if @idea.save
-      flash[:notice] = "Your idea has been successfully created!"
-      redirect_to idea_path(@idea)
+    if current_user == nil
+      flash[:error] = "Please login to post a new idea."
+      redirect_to login_path
     else
-      flash[:error] = "Uh oh! Looks like something went wrong. Try again."
-      redirect_to new_idea_path
+      @idea = Idea.new(idea_params)
+      @idea.user_id = current_user.id
+      @user = User.find_by_id(params[:id])
+      if @idea.save
+        flash[:notice] = "Your idea has been successfully created!"
+        redirect_to idea_path(@idea)
+      else
+        flash[:error] = "Uh oh! Looks like something went wrong. Try again."
+        redirect_to new_idea_path
+      end
     end
   end
 
   def edit
     @idea = Idea.find_by_id(params[:id])
     @user = User.find_by_id(params[:id])
-    render :edit
+    if current_user == @idea.user
+      render :edit
+    else
+      flash[:error] = "You are not authorized to edit this idea."
+      redirect_to idea_path(@idea)
+    end
   end
 
   def update
     @idea = Idea.find_by_id(params[:id])
-    if @idea.update(idea_params)
-      redirect_to idea_path(@idea)
+    @user = User.find_by_id(params[:id])
+    if current_user == @idea.user
+      if @idea.update(idea_params)
+        redirect_to idea_path(@idea)
+      else
+        flash[:error] = "There was a problem saving your changes"
+        redirect_to idea_path(@idea)
+      end
     else
-      flash[:error] = "There was a problem saving your changes"
+      flash[:error] = "You are not authorized to save these changes."
       redirect_to idea_path(@idea)
     end
   end
 
   def destroy
     @idea = Idea.find_by_id(params[:id])
-    @idea.destroy
-    redirect_to ideas_path
+    @user = User.find_by_id(params[:id])
+    if current_user == @idea.user
+      @idea.destroy
+      redirect_to ideas_path
+    else
+      flash[:error] = "You are not authorized to delete this idea!"
+      redirect_to idea_path(@idea)
+    end
   end
 
   def upvote
