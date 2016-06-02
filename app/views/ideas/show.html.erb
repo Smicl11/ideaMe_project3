@@ -12,16 +12,19 @@
             Downvote
             <%= @idea.get_downvotes.size %>
           <% end %>
+          <% if current_user == @idea.user %>
           <div class="pencil-trash">
             <%= link_to '', edit_idea_path, class:"glyphicon glyphicon-pencil"%>
             <%= link_to '', delete_idea_path, data: {:confirm => 'Are you sure you want to delete this amazing idea?'}, :method => :delete, class:"glyphicon glyphicon-trash"%>
           </div>
+          <% end %>
         </div>
         <div class="panel-footer">
           <h6>
             Submitted <%= time_ago_in_words(@idea.created_at) %> ago
             by <%= @idea.user.first_name %>
           </h6>
+          <%= social_share_button_tag(@idea.idea, :popup => "true") %>
         </div>
       </div>
       <div class="panel panel-default">
