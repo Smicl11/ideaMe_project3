@@ -1,28 +1,7 @@
-== README
+== ideaMe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[idea-me.herokuapp.com]
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Description
+When I was trying to decide on an idea for my final project I couldn't come up with anything. I used my lack of an idea and turned it into my idea!
+I created a website where people can share their ideas with others, comment, and like ideas!
