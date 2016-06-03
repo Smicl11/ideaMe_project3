@@ -2,7 +2,7 @@
 **by Bryan Smith**
 
 **Project Site**
-[a link](http://idea-me.herokuapp.com)
+[idea-me.herokuapp.com](http://idea-me.herokuapp.com)
 
 ### Inspiration
 When I was tasked with coming up for an idea for my final WDI project I could not think of anything! Rather than letting my lack of an idea stop me I decided to turn my lack of an idea into my idea! I created a website where people can come and share ideas they have with the world to inspire others. Keep on scrolling to learn more about the app and what it does.
