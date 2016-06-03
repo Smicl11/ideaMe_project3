@@ -1,7 +1,0 @@
-== ideaMe
-
-[idea-me.herokuapp.com]
-
-* Description
-When I was trying to decide on an idea for my final project I couldn't come up with anything. I used my lack of an idea and turned it into my idea!
-I created a website where people can share their ideas with others, comment, and like ideas!
