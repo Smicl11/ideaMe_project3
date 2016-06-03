@@ -1,11 +1,18 @@
 <div class="container">
   <div class="row pad-top">
     <div class="jumbotron">
-      <p>Welcome!</p>
-      <h1 class="display-3">Need some inspiration?</h1>
+      <% if current_user %>
+        <p>Welcome back, <%= current_user.first_name %>!</p>
+        <h1 class="display-3">Needing some inspiration?</h1>
+        <br>
+        <p>Just browse all the ideas other people have submitted. Don't forget vote on them or share them if you think they're awesome!</p>
+      <% else %>
+        <p>Welcome!</p>
+        <h1 class="display-3">Need some inspiration?</h1>
+        <br>
+        <p>Checkout the best new way to share ideas and be inspired by others! Scroll down to checkout some of the amazing ideas that have already submitted.</p>
+      <% end %>
       <br>
-      <p>Checkout the best new way to share ideas and be inspired by others! Scroll down to checkout some amazing ideas submitted by others.</p>
-      <hr>
       <p></p>
       <p class="lead">
         <% if current_user %>
