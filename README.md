@@ -3,13 +3,15 @@
 
 ### An open source idea sharing app, where users can share, like, and comment on each others ideas!
 
-![alt tag]()
+![alt tag](https://github.com/Smicl11/ideaMe_project3/blob/master/main.png)
 
 ### Technologies
 - Ruby on Rails
 - Bootstrap
 - PostgresSQL database
 - Sass
+
+![alt tag](https://github.com/Smicl11/ideaMe_project3/blob/master/main.png)
 
 ### Additional Gems
 - gem 'simple_form'
@@ -18,7 +20,7 @@
 - gem 'acts_as_commentable_with_threading'
 - gem 'social-share-button'
 
-![alt tag]()
+![alt tag](https://github.com/Smicl11/ideaMe_project3/blob/master/idea-index.png)
 
 #### User Story
 - User starts on splash page with jumbotron asking if they are looking for inspiration, user attention brought to login/signup
@@ -30,9 +32,7 @@
 - From the profile page, user can create a new idea, delete or edit their profile
 - Graceful fail on all validations, to guide user.
 
-![alt tag]()
+![alt tag](https://github.com/Smicl11/ideaMe_project3/blob/master/profile.png)
 
 #### Relationship Model
-
-
-![alt tag]()
+![alt tag](https://raw.githubusercontent.com/Smicl11/ideaMe_project3/master/erd.png)
