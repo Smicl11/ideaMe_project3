@@ -11,10 +11,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    #If a user doesn't specify an avatar a default one will be automatically provided.
-    if @user.avatar == ""
-      @user.avatar = "/assets/placeholder.jpg"
-    end
 
     if @user.save
       flash[:success] = "Welcome to ideaMe! Get ready to share your amazing ideas!"
